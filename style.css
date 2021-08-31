@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+header {
+    background-color: maroon;
+    color: mistyrose;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+header > .name-logo {
+    padding: 5px;
+}
+header > .add-book {
+    border: solid black 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+section {
+    background-color: moccasin;
+    min-height: 700px;
+}
+footer {
+    background-color:royalblue;
+    height: 100px;
+}
+section {
+    border: solid black 1px;
+}
+.items-container {
+    justify-content: center;
+}
+@media only screen and (max-width: 650px) {
+    .items-container {
+        display: grid;
+        grid-template-rows: 100%;
+    }
+}
+
+@media only screen and (min-width: 651px) and (max-width: 960px) {
+    .items-container {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+      }
+  }
+
+@media only screen and (min-width: 961px) {
+    .items-container {
+      display: grid;
+      grid-template-columns: repeat(3, 33%);
+    }
+  }
+
+.item {
+    display: flex;
+    padding: 25px;
+    width: 300px;
+}
+.editContainer {
+    background-color: rgb(76, 127, 204);
+    height: 80px;
+    line-height: 80px;
+    margin-top: 50px;
+}
+.deleteContainer {
+    background-color: rgba(196, 22, 22, 0.774);
+    height: 80px;
+    line-height: 80px;
+    margin-top: 50px;
+}
+.bookContainer {
+    background-color:peru;
+    width: 250px;
+    text-align: center;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+}
+.bookContainer > * {
+    padding: 5px;
+}
