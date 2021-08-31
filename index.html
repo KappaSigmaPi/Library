@@ -5,17 +5,14 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <meta name='viewport'
-      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 </head>
 <body>
     <header>
         <div class="name-logo">
             <h1>Library</h1>
         </div>
-        <div class="add-book">
-            <h1>+ Add Book</h1>
-        </div>
+        <button class="add-book">+ Add Book</button>
     </header>
     <section>
         <div class="items-container">
@@ -25,5 +22,24 @@
     <footer>
         
     </footer>
+
+     <!-- Modal Section -->
+     <div class="bg-modal">
+        <div class="modal-content">
+        <div class="close">
+            +
+        </div>    
+            <form id="newBook">
+                <input type="text" id="title" placeholder="Title">
+                <input type="text" id='author' placeholder="Author">
+                <input type="number" id="pages" min="1" placeholder="pages">
+                <div>
+                    <label for="isRead">Did you read it ?</label>
+                    <input id="isRead" type="checkbox">
+                </div> 
+                <input type="submit" value="Add Book!">   
+            </form>
+        </div>
+     </div>
 </body>
 </html>

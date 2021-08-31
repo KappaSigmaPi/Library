@@ -14,7 +14,10 @@ function addBookToLibrary(book) {
 }
 
 function displayBooks() {
+    itemsContainer.innerHTML ='';
+
     myLibrary.forEach(function(book) {
+
         const item = document.createElement('div');
         item.classList.add('item');
         const bookContainer = document.createElement('div');
@@ -34,7 +37,7 @@ function displayBooks() {
 
         const isRead = document.createElement('div');
         let finished = book.isRead;
-        if(finished == true) {
+        if(finished == "on") {
             isRead.classList.add('read');
             isRead.textContent ='Read';
         } else {
@@ -68,22 +71,28 @@ function displayBooks() {
     });
 }
 
-// Adding placeholders for presentation 
+let modal = document.querySelector('.bg-modal');
+let addButton = document.querySelector('.add-book');
 
-let fake1 = new Book('Cool Book', 'Great Autor', 543, false);
+addButton.addEventListener('click', () => {
+    modal.style.display = 'flex';
+});
 
-let fake2 = new Book('Cool Book', 'Great Autor', 543, false);
+let closePop = document.querySelector('.close');
+closePop.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
 
-let fake3 = new Book('Cool Book', 'Great Autor', 543, false);
+const newBookForm = document.querySelector('#newBook');
 
-let fake4 = new Book('Cool Book', 'Great Autor', 543, false);
+newBookForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formTitle = document.getElementById('title').value;
+    const formAuthor = document.getElementById('author').value;
+    const formPages = document.getElementById('pages').value;
+    const formIsRead = document.getElementById('isRead').value;
 
-let fake5 = new Book('Cool Book', 'Great Autor', 543, false);
-
-addBookToLibrary(fake1);
-addBookToLibrary(fake2);
-addBookToLibrary(fake3);
-addBookToLibrary(fake4);
-addBookToLibrary(fake5);
-
-displayBooks();
+    const book = new Book(formTitle, formAuthor, formPages, formIsRead);
+    addBookToLibrary(book);
+    displayBooks();
+});
