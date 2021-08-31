@@ -26,9 +26,7 @@ footer {
     background-color:royalblue;
     height: 100px;
 }
-section {
-    border: solid black 1px;
-}
+
 .items-container {
     justify-content: center;
 }
