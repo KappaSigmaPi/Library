@@ -13,6 +13,16 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+let booksInLocalStorage = localStorage.length;
+console.log(booksInLocalStorage);
+
+for(let i=0; i<booksInLocalStorage; i++) {
+    let book = JSON.parse(localStorage.getItem('book' + i));
+    addBookToLibrary(book);
+}
+displayBooks();
+
+
 function displayBooks() {
     itemsContainer.innerHTML ='';
     let id = 0;
@@ -87,6 +97,10 @@ function displayBooks() {
         item.appendChild(tagsContainer);
 
         itemsContainer.appendChild(item);
+
+        const bookName = 'book' + id;
+        console.log(book);
+        localStorage.setItem(bookName, JSON.stringify(book));
 
         id++;
     });
