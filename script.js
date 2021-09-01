@@ -38,7 +38,7 @@ function displayBooks() {
 
         const isRead = document.createElement('div');
         let finished = book.isRead;
-        if(finished == "on") {
+        if(finished == true) {
             isRead.classList.add('read');
             isRead.textContent ='Read';
         } else {
@@ -53,6 +53,15 @@ function displayBooks() {
         editContainer.setAttribute('id', 'id'+id);
         editContainer.classList.add('editContainer');
         editContainer.textContent = 'EDIT';
+        editContainer.addEventListener('click', () => {
+            let localId = deleteContainer.getAttribute('id').slice(2);
+            if(myLibrary[localId].isRead == true) {
+                myLibrary[localId].isRead = false;
+            } else {
+                myLibrary[localId].isRead = true
+            }
+            displayBooks();
+        });
 
         const deleteContainer = document.createElement('div');
         deleteContainer.classList.add('deleteContainer');
@@ -102,7 +111,8 @@ newBookForm.addEventListener('submit', function(e) {
     const formTitle = document.getElementById('title').value;
     const formAuthor = document.getElementById('author').value;
     const formPages = document.getElementById('pages').value;
-    const formIsRead = document.getElementById('isRead').value;
+    const formIsRead = document.getElementById('isRead').checked;
+    console.log(formIsRead);
 
     const book = new Book(formTitle, formAuthor, formPages, formIsRead);
     addBookToLibrary(book);
