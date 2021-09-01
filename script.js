@@ -15,6 +15,7 @@ function addBookToLibrary(book) {
 
 function displayBooks() {
     itemsContainer.innerHTML ='';
+    let id = 0;
 
     myLibrary.forEach(function(book) {
 
@@ -49,12 +50,21 @@ function displayBooks() {
         tagsContainer.classList.add('tagsContainer');
 
         const editContainer = document.createElement('div');
+        editContainer.setAttribute('id', 'id'+id);
         editContainer.classList.add('editContainer');
         editContainer.textContent = 'EDIT';
 
         const deleteContainer = document.createElement('div');
         deleteContainer.classList.add('deleteContainer');
+        deleteContainer.setAttribute('id', 'id'+id);
         deleteContainer.textContent = 'DELETE';
+        deleteContainer.addEventListener('click', () => {
+            let localId = deleteContainer.getAttribute('id').slice(2);
+            myLibrary.splice(localId, 1);
+            console.log(deleteContainer.getAttribute('id'));
+            console.log(myLibrary);
+            displayBooks();
+        });
 
         bookContainer.appendChild(title);
         bookContainer.appendChild(author);
@@ -68,6 +78,8 @@ function displayBooks() {
         item.appendChild(tagsContainer);
 
         itemsContainer.appendChild(item);
+
+        id++;
     });
 }
 
@@ -95,4 +107,7 @@ newBookForm.addEventListener('submit', function(e) {
     const book = new Book(formTitle, formAuthor, formPages, formIsRead);
     addBookToLibrary(book);
     displayBooks();
+    modal.style.display = 'none';
+
+    newBookForm.reset();
 });
